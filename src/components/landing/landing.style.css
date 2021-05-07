@@ -1,0 +1,31 @@
+.featured{
+   /* height: 400px; */
+}
+
+.featured .featuredimage{
+    height: 200px;
+    width: 300px;
+}
+
+.bestseller{
+    background-color: #d6fffa;
+}
+
+.bestseller h3{
+text-align: center;
+}
+
+.bestseller p{
+    text-align: center;
+}
+
+.heading{
+    margin-top: -4%;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }

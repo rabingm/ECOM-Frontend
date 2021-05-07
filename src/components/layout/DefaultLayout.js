@@ -1,12 +1,13 @@
 import React from 'react'
-import Header from '../header/Header'
-import Footer from "../footer/Footer";
+import Header from './header/Header'
+import Footer from "./footer/Footer";
+import Landing from '../landing/Landing';
 
 const DefaultLayout = () => {
     return (
         <div>
             <Header/>
-            This is Default layout
+            <Landing/>
             <Footer/>
         </div>
     )

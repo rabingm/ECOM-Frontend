@@ -2,7 +2,7 @@ import React from "react";
 import ForgotPasswordFrom from "../../components/forgotPW/ForgotPasswordForm";
 
 import "./forgotPassword.style.css";
-const ForgotPassword = () => {
+const ForgotPasswordPage = () => {
   return (
     <div>
       <ForgotPasswordFrom/>
@@ -10,4 +10,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ForgotPasswordPage;

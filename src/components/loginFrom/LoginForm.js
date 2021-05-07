@@ -53,15 +53,17 @@ const LoginForm = () => {
             />
           </Form.Group>
 
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Remember me" />
+          </Form.Group>
+
           <div className="submit">
-            <span className="fp">
-              <a href="/forgotpw">Forgot Password?</a>
-            </span>
-            
-            <span className="button">
               <Button variant="outline-light" type="submit">
                 Submit
               </Button>
+
+            <span className="fp">
+              <a href="/forgotpw">Forgot Password?</a>
             </span>
           </div>
         </Form>

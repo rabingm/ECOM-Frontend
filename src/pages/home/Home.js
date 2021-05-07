@@ -1,5 +1,5 @@
 import React from 'react'
-import DefaultLayout from '../../components/defaultLayout/DefaultLayout'
+import DefaultLayout from '../../components/layout/DefaultLayout'
 
 export const Home = () => {
     return (
@@ -8,3 +8,4 @@ export const Home = () => {
         </div>
     )
 }
+
