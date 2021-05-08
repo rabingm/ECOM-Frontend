@@ -2,3 +2,11 @@
     background-color:aquamarine;
 }
 
+.search{
+    align-items: center;
+    margin-right: auto;
+}
+
+.search textfield{
+    width: 1000px;
+}

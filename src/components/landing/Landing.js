@@ -36,9 +36,9 @@ const Landing = () => {
         <div className="px-4 ">
           <Jumbotron className="bestseller">
           <h2 className="heading py-1 text-center font-weight-bold">Best Seller</h2>
-          <div class="divider bg-dark"></div>
             <Row>
               <Col>
+              
                 <Image
                   className="image ml-5"
                   alt="Iphone 12 Pro Max"
