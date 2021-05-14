@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import { Form, Button, Card } from "react-bootstrap";
 
 import "./loginForm.style.css";
@@ -8,8 +10,10 @@ const initialState = {
   password: "",
 };
 
+
 const LoginForm = () => {
   // const dispatch = useDispatch
+  const history = useHistory();
 
   const [login, setLogin] = useState(initialState);
 
@@ -24,8 +28,8 @@ const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
-    console.log(login);
+    history.push("/home")
+    
   };
 
   return (
@@ -58,7 +62,7 @@ const LoginForm = () => {
           </Form.Group>
 
           <div className="submit">
-              <Button variant="outline-light" type="submit">
+              <Button  variant="outline-light" type="submit">
                 Submit
               </Button>
 
