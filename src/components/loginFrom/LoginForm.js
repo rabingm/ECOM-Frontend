@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Form, Button, Card } from "react-bootstrap";
 
 import "./loginForm.style.css";
 
 const initialState = {
-  email: "",
-  password: "",
+  email: "somethin@gmail.com",
+  password: "426376826",
 };
 
 
 const LoginForm = () => {
   // const dispatch = useDispatch
   const history = useHistory();
+
+  const dispatch = useDispatch()
 
   const [login, setLogin] = useState(initialState);
 
@@ -42,6 +45,7 @@ const LoginForm = () => {
               name="email"
               type="email"
               placeholder="Enter Email"
+              value={login.email}
               onChange={handleOnChange}
               required
             />
@@ -52,6 +56,7 @@ const LoginForm = () => {
               name="password"
               type="password"
               placeholder="Password"
+              value={login.password}
               onChange={handleOnChange}
               required
             />
@@ -68,6 +73,10 @@ const LoginForm = () => {
 
             <span className="fp">
               <a href="/forgotpw">Forgot Password?</a>
+            </span>
+
+            <span className="fp">
+              <a href="/signup">Create New Account</a>
             </span>
           </div>
         </Form>
