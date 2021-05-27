@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Card, Col, Row, Table } from "react-bootstrap";
+import { Button, Card, Col, Image, Row, Table } from "react-bootstrap";
+
+import { viewCart } from "../../pages/cart/CartAction";
 
 import "./cart.style.css";
 
 const Cart = () => {
 
-  const {selectedProd} = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+
+  const {selectedProd, name} = useSelector(state => state.cart)
+
+  useEffect(() => {
+    dispatch(viewCart())
+  }, [dispatch])
   
-  console.log("FROM CART",selectedProd.Item)
+  // console.log("FROM CART",selectedProd[0].Item)
 
 // const test = selectedProd.Item.map(1, )
 
@@ -37,19 +45,24 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      {/* {
-                        selectedProd?.map((row, i)=>{<td>{selectedProd.Item.name}</td>})
-                      }
-                      {
-                        selectedProd?.map((row, i)=><td>{selectedProd.qty}</td>)
-                      }
-                       */}
-                      
-                      {/* <td>{selectedProd.price}</td>
-                      <td>{(selectedProd.qty)*(selectedProd.price)}</td> */}
-                    
-                    </tr>
+                    {
+                      selectedProd.map((row, i)=>(
+                        <tr>
+                          <td className="prodcart">
+                            <div className="cartimage">
+                            <Image src={selectedProd[i].Item.images} width="80px"
+										height="auto"
+										alt="product image"/> </div>
+                            <div className="itemName">{selectedProd[i].Item.name }</div>
+                            
+                          </td>
+                          <td>{selectedProd[i].Item.qty}</td>
+                          <td>{selectedProd[i].Item.price}</td>
+                          <td>{(selectedProd[i].Item.qty)*(selectedProd[i].Item.price)}</td>
+                          
+                        </tr>
+                      ))
+                    }
                   </tbody>
                 </Table>
               </div>

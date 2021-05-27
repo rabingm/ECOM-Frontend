@@ -10,3 +10,15 @@
 .itmsum{
     margin-left: 50px;
 }
+
+.cartimage{
+    /* white-space: nowrap; */
+    display: inline-block;
+    margin-right: 10px;
+
+}
+.itemName{
+    /* white-space: nowrap; */
+    display: inline-block;
+    
+}

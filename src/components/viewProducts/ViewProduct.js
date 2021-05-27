@@ -60,6 +60,8 @@ const ViewProduct = () => {
                 className="featuredimage ml-5"
                 alt="Iphone 12 Pro Max"
                 src={selectedProd.images}
+                width="300px"
+
               />
             </Col>
             <Col className="mr-5">

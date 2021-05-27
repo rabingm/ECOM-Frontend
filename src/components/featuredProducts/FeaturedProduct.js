@@ -33,6 +33,7 @@ const feturedTo = {
                 className="featuredimage ml-5"
                 alt={featuredprod.name}
                 src={featuredprod.images}
+                width="300px"
               />
             </Col>
             <Col className="mr-5">

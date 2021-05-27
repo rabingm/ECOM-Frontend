@@ -23,8 +23,8 @@ export const addToCart = (items) => async (dispatch) => {
 export const viewCart = () => async (dispatch) => {
   try {
     dispatch(requestPending());
-    const reusllt = await fetchCart();
-    dispatch(fetchCartSuccess());
+    const result = await fetchCart();
+    dispatch(fetchCartSuccess(result));
   } catch (error) {
     const err = {
       status: "error",
