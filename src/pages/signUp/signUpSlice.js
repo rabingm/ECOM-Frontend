@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   signupResponse: {},
-  error:""
+  error: "",
 };
 
 const signupSlice = createSlice({
@@ -27,5 +27,5 @@ const signupSlice = createSlice({
 });
 const { reducer, actions } = signupSlice;
 
-export const { requestPending, createUserSuccess , createUserFail} = actions;
+export const { requestPending, createUserSuccess, createUserFail } = actions;
 export default reducer;

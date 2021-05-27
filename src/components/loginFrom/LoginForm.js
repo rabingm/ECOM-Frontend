@@ -31,7 +31,7 @@ const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    history.push("/home")
+    history.push("/")
     
   };
 

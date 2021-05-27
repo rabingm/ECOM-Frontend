@@ -7,6 +7,7 @@ export const userLoginAPI = (FormData) => {
   return new Promise(async (resolve, reject) => {
     try {
       const { data } = await axios.post();
+      resolve(data)
     } catch (error) {
       reject(error);
     }

@@ -9,25 +9,37 @@ import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signUp/SignupPage";
 import NotFound from "./pages/notFound/NotFound";
 import ForgotPasswordPage from "./pages/forgotPassword/ForgotPasswordPage";
-
+import ViewProduct from "./components/viewProducts/ViewProduct";
+import CartPage from "./pages/cart/CartPage";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/">
+
+          <Route exact path="/products/:slug">
+            <ViewProduct />
+          </Route>
+          <Route exact path="/cart">
+            <CartPage />
+          </Route>
+
+          <Route exact path="/login">
             <LoginPage />
           </Route>
+
           <Route exact path="/signup">
             <SignupPage />
           </Route>
+
           <Route exact path="/forgotpw">
             <ForgotPasswordPage />
           </Route>
+
           <Route exact path="*">
             <NotFound />
           </Route>

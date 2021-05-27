@@ -7,10 +7,26 @@ import {
   FormControl,
   Jumbotron,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+import { viewCart } from "../../../pages/cart/CartAction";
 
 import "./header.style.css";
 
 function Header() {
+  const dispatch=useDispatch()
+  const history = useHistory();
+
+  const {selectedProd} = useSelector(state => state.cart)
+
+  const handleOnCartClick=()=>{
+    dispatch(viewCart())
+    history.push("/cart")
+  }
+const totalQty = selectedProd?.reduce((subtotal, row)=>{
+return subtotal+row.Quantity
+}, 0)
+
   return (
     <>
       <Navbar.Brand sticky="top" />
@@ -34,12 +50,12 @@ function Header() {
           </Button>
         </Form>
 
-        <a className="ml-4" href="/">
+        <a className="ml-4" onClick={() => history.push("/login")}>
           Login/
         </a>
         <a href="/signup">SignUp</a>
-        <a className="p-1 ml-2" href="/basket">
-          <i class="fas fa-cart-arrow-down"></i>
+        <a className="p-1 ml-2" onClick={handleOnCartClick}>
+          <i class="fas fa-cart-arrow-down"></i>{totalQty}
         </a>
       </Navbar>
     </>
