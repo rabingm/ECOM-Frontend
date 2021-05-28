@@ -1,15 +1,17 @@
 import axios from "axios";
 
 const rootURL = "http://localhost:8001/api/v1/";
-const productsAPI = rootURL + "products";
-const featuredAPI = rootURL + "products/feature";
-const getProAPI = rootURL + "products/product/";
+const productsAPI = rootURL + "product";
+const featuredAPI = rootURL + "product/feature";
+const getProAPI = rootURL + "product/product/";
+const viewMoreAPI = rootURL + "product/products/viewmore"
 
 export const getProducts = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async(resolve, reject) => {
     try {
-      const { data } = axios.get(productsAPI);
+      const { data } =await axios.get(viewMoreAPI);
       resolve(data);
+      console.log("from api", data)
     } catch (error) {
       reject(error);
     }

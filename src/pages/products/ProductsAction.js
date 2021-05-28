@@ -19,6 +19,8 @@ export const displayProduct = () => async (dispatch) => {
     dispatch(requestPending());
 
     const result = await getProducts();
+
+    console.log("from actions",result)
     //result will receive status, message, reult:[]
     dispatch(fetchProductsSuccess(result));
   } catch (error) {
