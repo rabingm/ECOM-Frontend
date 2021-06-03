@@ -7,18 +7,23 @@
     margin-right: auto;
 } */
 
-.itmsum{
-    margin-left: 50px;
+.itmsum {
+  margin-left: 50px;
 }
 
-.cartimage{
-    /* white-space: nowrap; */
-    display: inline-block;
-    margin-right: 10px;
-
+.cartimage {
+  /* white-space: nowrap; */
+  display: inline-block;
+  margin-right: 10px;
 }
-.itemName{
-    /* white-space: nowrap; */
-    display: inline-block;
-    
+.itemName {
+  /* white-space: nowrap; */
+  display: inline-block;
+}
+
+.input-group {
+  width: 120px;
+  margin-left: 0px;
+  /* margin: auto; */
+
 }

@@ -1,0 +1,10 @@
+.body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.footer {
+    
+  margin-top: -50px;
+}

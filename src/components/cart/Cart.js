@@ -1,30 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { Button, Card, Col, Image, Row, Table } from "react-bootstrap";
 
 import { viewCart } from "../../pages/cart/CartAction";
+import { incQtySuccess, decQtySuccess } from "../../pages/cart/CartSlice";
 
 import "./cart.style.css";
+import Subtotal from "./Subtotal";
 
 const Cart = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-
-  const {selectedProd, name} = useSelector(state => state.cart)
+  const { selectedProd } = useSelector((state) => state.cart);
 
   useEffect(() => {
-    dispatch(viewCart())
-  }, [dispatch])
-  
+    dispatch(viewCart());
+  }, [dispatch]);
+
+  const [qty,setQty] = useState(selectedProd.Quantity);
+
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+
+  setQty({
+      ...qty,
+      value,
+    });
+  };
+
   // console.log("FROM CART",selectedProd[0].Item)
+  // const test = selectedProd.Item.map(1, )
 
-// const test = selectedProd.Item.map(1, )
-
-
-
-
-  
   return (
     <div className="Container  mt-2 mb-2">
       <Row>
@@ -45,54 +54,60 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {
-                      selectedProd.map((row, i)=>(
-                        <tr>
-                          <td className="prodcart">
-                            <div className="cartimage">
-                            <Image src={selectedProd[i].Item.images} width="80px"
-										height="auto"
-										alt="product image"/> </div>
-                            <div className="itemName">{selectedProd[i].Item.name }</div>
-                            
-                          </td>
-                          <td>{selectedProd[i].Item.qty}</td>
-                          <td>{selectedProd[i].Item.price}</td>
-                          <td>{(selectedProd[i].Item.qty)*(selectedProd[i].Item.price)}</td>
-                          
-                        </tr>
-                      ))
-                    }
+                    {selectedProd.map((row, i) => (
+                      <tr>
+                        <td className="prodcart">
+                          <div className="cartimage">
+                            <Image
+                              src={row.Item.images}
+                              width="80px"
+                              height="auto"
+                              alt="product image"
+                            />{" "}
+                          </div>
+                          <div className="itemName">{row.Item.name}</div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-btn">
+                              <button
+                                type="button"
+                                class="btn btn-danger btn-number"
+                                onClick={() => dispatch(decQtySuccess(row._id))}
+                                value="-"
+                              >
+                                -
+                              </button>
+                            </span>
+                            <input
+                              type="text"
+                              name="quant[2]"
+                              class="form-control input-number"
+                              value={row.Quantity}
+                              onBlur={handleOnChange}
+                            />
+                            <span class="input-group-btn">
+                              <button
+                                type="button"
+                                class="btn btn-success btn-number"
+                                onClick={() => dispatch(incQtySuccess(row._id))}
+                              >
+                                +
+                              </button>
+                            </span>
+                          </div>
+                        </td>
+                        <td>${row.Item.price}</td>
+                        <td>${row.Quantity * row.Item.price}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </Table>
               </div>
             </Card.Body>
           </Card>
         </Col>
-
-        <Col className="odrsum">
-          <Card border="light" style={{ width: "22rem" }}>
-            <Card.Header>
-              <h4>Order Summary</h4>
-            </Card.Header>
-            <Card.Body>
-              <Row>
-                <Col className="col-9">
-                  <Card.Title>Subtotal</Card.Title>
-                </Col>
-                <Col>
-                  <Card.Text>$</Card.Text>
-                </Col>
-              </Row>
-              <Row className="mt-3">
-                  <Button className="container fluid" varient="info">Proceed to CheckOut</Button>
-              </Row>
-              <Row className="mt-5">
-                  <h4>We Accept</h4>
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
+        <Subtotal />
       </Row>
     </div>
   );

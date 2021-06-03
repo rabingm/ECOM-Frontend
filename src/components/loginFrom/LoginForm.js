@@ -11,12 +11,10 @@ const initialState = {
   password: "426376826",
 };
 
-
 const LoginForm = () => {
   // const dispatch = useDispatch
   const history = useHistory();
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [login, setLogin] = useState(initialState);
 
@@ -31,8 +29,7 @@ const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    history.push("/")
-    
+    history.push("/");
   };
 
   return (
@@ -67,9 +64,9 @@ const LoginForm = () => {
           </Form.Group>
 
           <div className="submit">
-              <Button  variant="outline-light" type="submit">
-                Submit
-              </Button>
+            <Button variant="outline-light" type="submit">
+              Submit
+            </Button>
 
             <span className="fp">
               <a href="/forgotpw">Forgot Password?</a>

@@ -5,8 +5,8 @@ import "./footer.style.css";
 
 const Footer = () => {
   return (
-    <div>
-      <div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div className="body">
+      <div className="footer navbar-inverse navbar-fixed-bottom">
           
         <Row>
           <Col>
@@ -24,7 +24,7 @@ const Footer = () => {
         </Row>
             
       </div>
-      <div class="container ">
+      <div class="footer-buttom ">
         &copy; {new Date().getFullYear()} Rabin Ghimire All Right Reserved
                 <a>Privacy Policy</a>
                 <a>Terms & Conditions</a>

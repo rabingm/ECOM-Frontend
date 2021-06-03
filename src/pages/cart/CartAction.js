@@ -1,10 +1,14 @@
 import { fetchCart } from "../../apis/cartAPI";
+import { useSelector } from "react-redux";
+
 
 import {
   requestPending,
   addtoCartSuccess,
   fetchCartSuccess,
   requestFail,
+  incQtySuccess,
+  decQtySuccess
 } from "./CartSlice";
 
 export const addToCart = (items) => async (dispatch) => {
@@ -33,3 +37,5 @@ export const viewCart = () => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
+ 
+

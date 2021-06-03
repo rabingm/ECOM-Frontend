@@ -11,6 +11,9 @@ import NotFound from "./pages/notFound/NotFound";
 import ForgotPasswordPage from "./pages/forgotPassword/ForgotPasswordPage";
 import ViewProduct from "./components/viewProducts/ViewProduct";
 import CartPage from "./pages/cart/CartPage";
+import TempCart from "./pages/cart/TempCart";
+import { FormCheck } from "react-bootstrap";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
   return (
@@ -26,6 +29,12 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <CartPage />
+          </Route>
+          <Route exact path="/checkout">
+            <CheckoutPage />
+          </Route>
+          <Route exact path="/temp-checkoput">
+            <TempCart />
           </Route>
 
           <Route exact path="/login">

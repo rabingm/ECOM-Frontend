@@ -3,12 +3,20 @@ import Header from './header/Header'
 import Footer from "./footer/Footer";
 import Landing from '../landing/Landing';
 
+import "./defaultlayout.style.css";
+
 const DefaultLayout = ({children}) => {
     return (
-        <div>
+        <div className="body">
+            <div className="header">
             <Header/>
+            </div>
+            
             {children}
-            <Footer/>
+            <div>
+            <Footer className="footer"/>
+            </div>
+            
         </div>
     )
 }

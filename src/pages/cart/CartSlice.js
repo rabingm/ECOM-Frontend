@@ -5,7 +5,9 @@ const initialState = {
   status: "",
   message: "",
   selectedProd: [],
+  selectedProdInc:[]
 };
+
 
 const cartSlice = createSlice({
   name: "cart",
@@ -35,6 +37,29 @@ const cartSlice = createSlice({
       state.status = payload.status;
       state.message = payload.message;
     },
+    incQtySuccess: (state, {payload} ) => {
+
+    const newCart = state.selectedProd.map((row)=>{
+      if(row._id === payload){
+        row.Quantity++
+      }
+      return row
+    })
+
+// console.log(newCart)
+     
+    },
+    decQtySuccess: (state, { payload }) => {
+
+      const newCart = state.selectedProd.map((row)=>{
+        if(row.Quantity <= 1){
+          return row.Quantity = 1
+        }
+        if(row._id === payload){
+          row.Quantity--  
+        }
+      })
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -50,6 +75,8 @@ export const {
   addtoCartSuccess,
   fetchCartSuccess,
   requestFail,
+  incQtySuccess,
+  decQtySuccess
 } = actions;
 
 export default reducer;
