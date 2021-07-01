@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const rootURL = "http://localhost:8000/api/v1/";
+const rootURL = "http://localhost:8001/api/v1/";
 const cartAPI = rootURL + "cart";
 
 export const fetchCart = () => {

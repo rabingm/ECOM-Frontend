@@ -1,22 +1,38 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Spinner, Alert } from "react-bootstrap";
+
+import { sendLogin, userAutoLogin } from "../../pages/login/loginAction";
+import { updateLogin } from "../../pages/login/loginSlice";
 
 import "./loginForm.style.css";
 
 const initialState = {
-  email: "somethin@gmail.com",
-  password: "426376826",
+  email: "fullel@gmail.com",
+  password: "123123",
 };
 
 const LoginForm = () => {
-  // const dispatch = useDispatch
+  const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const { isLoading, loginResponse, isAuth, message } = useSelector(
+    (state) => state.login
+  );
+
   const [login, setLogin] = useState(initialState);
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  // const token = sessionStorage.getItem("accessJWT");
+
+  useEffect(() => {
+    isAuth && history.replace(from);
+    !isAuth && dispatch(userAutoLogin());
+  }, [isAuth]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +45,40 @@ const LoginForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    history.push("/");
+
+    if (!login.email || !login.password) {
+      alert("Please fill all the input fields");
+    }
+
+    dispatch(sendLogin(login));
+    // history.push("/");
   };
 
+  console.log("from login form", login)
+
   return (
-    <div className="main p-4  ">
+    // <div className="main p-4  ">
+    //    {message === false && (
+    //       <Alert variant="danger"><p>Invalid details</p></Alert>
+    //     )}
+    //   <div class="log-form">
+    //     <h2>Sign-in</h2>
+    //     <form onSubmit={handleOnSubmit}>
+    //       <input name="email" placeholder="Enter your email" required="" type="email" class="form-control" value={login.email}
+    //         onChange={handleOnChange} />
+    //       <input name="password" placeholder="Password" required="" type="password" class="form-control" value={login.password}
+    //         onChange={handleOnChange} />
+    //       <button type="submit" class="btn">Login</button>
+    //       <a class="forgot" href="/forgotpw">Forgot Password</a>
+    //     </form>
+    //   </div>
+    // </div>
+
+    <div className="main p-4  login">
       <Card className="p-3">
+        {message === false && (
+          <Alert variant="danger"><p>Invalid details</p></Alert>
+        )}
         <Form className="m-3" onSubmit={handleOnSubmit}>
           <h2>Sign-in</h2>
           <Form.Group controlId="formBasicEmail">

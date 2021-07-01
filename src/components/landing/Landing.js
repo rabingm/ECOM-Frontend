@@ -7,6 +7,9 @@ import ip12 from "../../img/ip12.jpeg";
 
 import {FeaturedProduct} from "../featuredProducts/FeaturedProduct";
 import ViewMore from "../viewMore/ViewMore";
+import Gallery from "../gallery/Gallery";
+import Testimonials from "../testimonials/Testimonials";
+import Faq from "../faq/Faq";
 
 const Landing = () => {
   return (
@@ -15,7 +18,9 @@ const Landing = () => {
         <div className="featured px-4 pt-2"></div>
         <div className="px-4 ">
           <FeaturedProduct />
-          <ViewMore/>
+          <Gallery/>
+          <Testimonials/>
+          <Faq/>
         </div>
       </div>
     </>

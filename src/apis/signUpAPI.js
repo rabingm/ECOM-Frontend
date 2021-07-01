@@ -4,7 +4,6 @@ const rootURL = "http://localhost:8001/api/v1/";
 const signAPI = rootURL + "signup";
 
 export const createUserAPI = (formDT) => {
-  console.log("GOT IN APIS")
 
   return new Promise(async (resolve, reject) => {
     try {

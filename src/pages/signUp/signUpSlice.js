@@ -15,7 +15,7 @@ const signupSlice = createSlice({
     },
 
     createUserSuccess: (state, { payload }) => {
-      state.loginResponse = payload;
+      state.signupResponse = payload;
       state.isLoading = false;
     },
 

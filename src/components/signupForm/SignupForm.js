@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { Button, Card, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { Alert, Button, Card, Form, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { createUser } from "../../pages/signUp/signUpAction";
+import { sendLogin } from "../../pages/login/loginAction";
+
 
 const initialState = {
-  fname: "hvidsk ",
-  lname: "gjh",
-  email: "someyhing@gmail.com",
-  phone: "344343",
-  password: "fefer",
+  fname: "",
+  lname: "",
+  email: "",
+  phone: "",
+  password: "",
 };
 
 const SignupForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const [signUp, setSignUp] = useState(initialState);
+
+  const {isLoading,signupResponse} = useSelector(state => state.signup)
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -25,16 +31,39 @@ const SignupForm = () => {
     });
   };
 
+  // const getEmail = signUp.email
+  // const getPP = signUp.password
+
+  // const pushemailpp = {
+  //   email:getEmail,
+  //   password:getPP
+  // }
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
-    console.log("FORM SUBMITTED", signUp);
     dispatch(createUser(signUp));
+
+    if(signupResponse.status === "success"){
+      // dispatch(sendLogin(pushemailpp))
+      history.push("/login")
+
+    }
   };
 
+  // console.log("from signuop",pushemailpp)
+
   return (
-    <div className="main p-4  ">
+    <div className="main p-4 signup ">
       <Card className="p-3">
+        {isLoading && <Spinner variant="primary" animation="border" />}
+
+        {signupResponse?.message && (
+          <Alert
+            variant={signupResponse?.status === "success" ? "success" : "danger"}
+          >
+            {signupResponse?.message}
+          </Alert>
+        )}
         <Form className="m-3" onSubmit={handleOnSubmit}>
           <h2>Create Account</h2>
 
@@ -100,7 +129,7 @@ const SignupForm = () => {
               <a href="/forgotpw">Forgot Password?</a>
             </span>
 
-            <span className="fp">
+            <span className="fp last">
               <a href="/">Login Now</a>
             </span>
           </div>

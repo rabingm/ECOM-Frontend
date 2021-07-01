@@ -1,7 +1,7 @@
 import React from "react";
 import SignupFrom  from "../../components/signupForm/SignupForm";
 
-// import "./login.style.css";
+import "./signup.style.css";
 
 const SignUpPage = () => {
   return (

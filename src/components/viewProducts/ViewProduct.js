@@ -7,6 +7,7 @@ import {
   Button,
   Dropdown,
   ButtonGroup,
+  Spinner,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -33,7 +34,7 @@ const ViewProduct = () => {
     dispatch(sendSlug(slug));
   }, [dispatch]);
 
-  const tempArg = selectedProd.qty
+  const tempArg = selectedProd?.qty
     ? new Array(selectedProd.qty).fill("item")
     : [];
  
@@ -46,9 +47,12 @@ const ViewProduct = () => {
 
     dispatch(addToCart(itemsInCart));
     // history.push(`/products/${selectedProd.slug}`);
-    console.log("selected qty", itemsInCart);
+    
   };
 
+  if(!selectedProd){
+    return <Spinner variant="info" animation="border"/>
+  }
   return (
     <div>
       <Header />
@@ -59,7 +63,7 @@ const ViewProduct = () => {
               <Image
                 className="featuredimage ml-5"
                 alt="Iphone 12 Pro Max"
-                src={selectedProd.images}
+                src={selectedProd?.images}
                 width="300px"
 
               />

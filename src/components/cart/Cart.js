@@ -54,7 +54,7 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {selectedProd.map((row, i) => (
+                    {selectedProd.map((row) => (
                       <tr>
                         <td className="prodcart">
                           <div className="cartimage">

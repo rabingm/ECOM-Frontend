@@ -14,6 +14,11 @@ import CartPage from "./pages/cart/CartPage";
 import TempCart from "./pages/cart/TempCart";
 import { FormCheck } from "react-bootstrap";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import ViewCategory from "./components/viewCategory/ViewCategory";
+import PrivateRoute from "./components/privateroute/PrivateRoute";
+import Delivery from "./pages/delivery/Delivery";
+import Aboutus from "./pages/aboutus/Aboutus";
+import Contactus from "./pages/contactus/Contactus";
 
 function App() {
   return (
@@ -27,15 +32,17 @@ function App() {
           <Route exact path="/products/:slug">
             <ViewProduct />
           </Route>
+          <Route exact path="/category/:slug">
+            <ViewCategory/>
+          </Route>
+
+
           <Route exact path="/cart">
             <CartPage />
           </Route>
-          <Route exact path="/checkout">
+          <PrivateRoute exact path="/checkout">
             <CheckoutPage />
-          </Route>
-          <Route exact path="/temp-checkoput">
-            <TempCart />
-          </Route>
+          </PrivateRoute>
 
           <Route exact path="/login">
             <LoginPage />
@@ -43,6 +50,16 @@ function App() {
 
           <Route exact path="/signup">
             <SignupPage />
+          </Route>
+
+          <Route exact path="/aboutus">
+            <Aboutus />
+          </Route>
+          <Route exact path="/contactus">
+            <Contactus />
+          </Route>
+          <Route exact path="/delivery">
+            <Delivery />
           </Route>
 
           <Route exact path="/forgotpw">

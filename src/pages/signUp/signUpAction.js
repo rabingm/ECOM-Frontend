@@ -2,6 +2,7 @@ import { requestPending, createUserSuccess , createUserFail} from "./signUpSlice
 
 import { createUserAPI } from "../../apis/signUpAPI";
 
+
 export const createUser =  (formData) => async (dispatch) => {
   try {
     

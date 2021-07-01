@@ -11,7 +11,6 @@ export const getProducts = () => {
     try {
       const { data } =await axios.get(viewMoreAPI);
       resolve(data);
-      console.log("from api", data)
     } catch (error) {
       reject(error);
     }
@@ -23,8 +22,6 @@ export const getSelectedProduct = (_id) => {
     try {
       const { data } = axios.get(productsAPI + "/" + _id);
       resolve(data);
-
-      console.log("from API", data);
     } catch (error) {
       reject(error);
     }

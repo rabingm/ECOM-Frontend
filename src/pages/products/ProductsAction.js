@@ -19,8 +19,6 @@ export const displayProduct = () => async (dispatch) => {
     dispatch(requestPending());
 
     const result = await getProducts();
-
-    console.log("from actions",result)
     //result will receive status, message, reult:[]
     dispatch(fetchProductsSuccess(result));
   } catch (error) {
@@ -70,8 +68,21 @@ export const sendSlug = (slug) => async (dispatch) => {
     result.status === "Success"
       ? dispatch(fetchProductBySlugSuccess(result))
       : dispatch(requestFail(result));
-
-    console.log("from action", result, slug);
+  } catch (error) {
+    const err = {
+      status: "error",
+      message: error.message,
+    };
+    dispatch(requestFail(err));
+  }
+};
+export const sendSlugGetSelectedProd = (slug) => async (dispatch) => {
+  try {
+    dispatch(requestPending());
+    const result = await getProductBySlug(slug);
+    result.status === "Success"
+      ? dispatch(fetchProductBySlugSuccess(result))
+      : dispatch(requestFail(result));
   } catch (error) {
     const err = {
       status: "error",
