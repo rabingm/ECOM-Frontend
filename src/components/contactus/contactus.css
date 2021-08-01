@@ -10,3 +10,8 @@
     padding-bottom: 5px;
     border-bottom: 2px solid #FF6701 !important;
   }
+
+  hr {
+    clear: both;
+    visibility: hidden;
+}

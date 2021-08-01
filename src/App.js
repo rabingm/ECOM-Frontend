@@ -18,7 +18,7 @@ import ViewCategory from "./components/viewCategory/ViewCategory";
 import PrivateRoute from "./components/privateroute/PrivateRoute";
 import Delivery from "./pages/delivery/Delivery";
 import Aboutus from "./pages/aboutus/Aboutus";
-import Contactus from "./pages/contactus/Contactus";
+import ContactUs from "./pages/contactUs/ContactUs";
 
 function App() {
   return (
@@ -32,14 +32,15 @@ function App() {
           <Route exact path="/products/:slug">
             <ViewProduct />
           </Route>
-          <Route exact path="/category/:slug">
-            <ViewCategory/>
-          </Route>
 
+          <Route exact path="/category/:slug">
+            <ViewCategory />
+          </Route>
 
           <Route exact path="/cart">
             <CartPage />
           </Route>
+
           <PrivateRoute exact path="/checkout">
             <CheckoutPage />
           </PrivateRoute>
@@ -55,9 +56,11 @@ function App() {
           <Route exact path="/aboutus">
             <Aboutus />
           </Route>
+          
           <Route exact path="/contactus">
-            <Contactus />
+            <ContactUs />
           </Route>
+
           <Route exact path="/delivery">
             <Delivery />
           </Route>

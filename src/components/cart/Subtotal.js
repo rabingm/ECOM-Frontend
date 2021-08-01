@@ -43,7 +43,7 @@ const Subtotal = (token) => {
     const data = {
       token,
       selectedProd,
-      subTotal
+      subTotal  
     };
 
     const result = await axios.post("http://localhost:8001/api/v1/payment", data, {
@@ -53,7 +53,11 @@ const Subtotal = (token) => {
     });
     console.log("from subtotal", result.data.result.status);
 
-    result.data.result.status == "succeeded" && history.push("/checkout")
+    if(result.data.result.status == "succeeded"){
+      dispatch(order(getFinalOrder))
+      history.push("/checkout")
+    } 
+     
   };
 
   return (
